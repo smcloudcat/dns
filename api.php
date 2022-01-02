@@ -2,16 +2,16 @@
 /*
  *请求接口文件
  *author：云猫
- *blog：xia.blue
- *QQ3522934828
  */
 $type=$_POST["type"];
 $subdomain=$_POST["subdomain"];
 $value=$_POST["value"];
+$email=$_POST["email"];
 if($value==null)exit('{"code":0,"msg":"请输入解析地址"}');
+if($email==null)exit('{"code":0,"msg":"请输入验证邮箱"}');
 if($subdomain==null)exit('{"code":0,"msg":"请输入主机名"}');
 if($type==null)exit('{"code":0,"msg":"请输入方式"}');
-$urls="http://api.lq520.club/api/domain.php?subdomain=".$subdomain."&value=".$value."&type=".$type."";
+$urls="http://api.lwcat.cn/api/domain.php?subdomain=".$subdomain."&value=".$value."&type=".$type."&email=".$email."";
 $curl=curl_init();//初始化curl
 $ua='Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)';
 curl_setopt($curl, CURLOPT_URL, $urls);//访问的url
