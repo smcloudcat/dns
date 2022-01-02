@@ -22,16 +22,18 @@ $(document).ready(function(){
   var type = $("#type").val();
   var subdomain = $("#subdomain").val();
   var value = $("#value").val();
+  var email = $("#email").val();
     $.post("api.php",
     {
       type:type,
       value:value,
+      email:email,
       subdomain:subdomain
     },
     function(data,status){
     var obj = JSON.parse(data);    
     if (obj.code == 1) {
-    layer.confirm('解析成功\n结果：'+obj.msg+'<br>域名：'+obj.url+'<br>接口由小猫咪提供～',{
+    layer.confirm('解析成功\n结果：'+obj.msg+'<br>域名：'+obj.url+'<br>请到邮箱验证域名<br>接口由小猫咪提供～',{
     btn: ['查看','好的'] }, 
     function(){
     window.location.href="http://"+obj.url;}, 
@@ -68,6 +70,10 @@ $(document).ready(function(){
               <div class="input-group">
               <span class="input-group-addon"><span class="glyphicon glyphicon-cloud"></span></span>
               <input type="text" name="value" id="value" class="form-control" placeholder="解析地址" required>
+              </div><br/>
+              <div class="input-group">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-cloud"></span></span>
+              <input type="text" name="email" id="email" class="form-control" placeholder="验证邮箱（不验证无法使用）" required>
               </div><br/>
               </form>
             
